@@ -7,6 +7,9 @@ install:
   - npm ci
   
 script:
+- npm run test
+  - npm run build
+  - now --token=$ZEIT_KEY -e BOT_TOKEN=$BOT_TOKEN
   
 deploy:
   provider: pages
