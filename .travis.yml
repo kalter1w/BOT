@@ -1,0 +1,19 @@
+language: node_js
+node_js: 
+  - 11.6.0
+cache: npm
+
+install:
+  - npm ci
+  
+script:
+- npm run test
+  - npm run build
+  - now --token=$ZEIT_KEY -e BOT_TOKEN=$BOT_TOKEN
+  
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GITHUB_TOKEN
+  on:
+    branch: master
